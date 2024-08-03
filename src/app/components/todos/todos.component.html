@@ -1,0 +1,16 @@
+<div class="todos">
+    <app-todo-form (newTodo)="addTodo($event)"></app-todo-form>
+    @for (todo of todos; track todo) {
+        <div class="todos__element">
+            <app-todo-item [todo]="todo"
+                           (completeTodo)="completeTodo($event.checked, todo)"
+                           (deleteTodo)="deleteTodo($event)">
+            </app-todo-item>
+        </div>
+    } @empty {
+        <div class="todos__empty">
+           <h3>No todos yet.</h3>
+        </div>
+    }
+
+</div>

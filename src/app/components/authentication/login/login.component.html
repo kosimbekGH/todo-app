@@ -1,0 +1,38 @@
+<div class="login">
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title><h4>Login</h4></mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+                <mat-form-field appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input matInput formControlName="email" type="email" required>
+                    @if (formGroup.get('email')?.touched) {
+                        <mat-error>
+                            @if (formGroup.get('email')?.hasError('required')) {
+                                Email is required
+                            } @else if (formGroup.get('email')?.hasError('email')) {
+                                Please enter a valid email address
+                            }
+                        </mat-error>
+                    }
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Password</mat-label>
+                    <input matInput formControlName="password" type="password" required>
+                    @if (formGroup.get('password')?.touched) {
+                        <mat-error>
+                            @if (formGroup.get('password')?.hasError('required')) {
+                                Password is required
+                            } @else if (formGroup.get('password')?.hasError('minlength')) {
+                                Password must be at least 6 characters long
+                            }
+                        </mat-error>
+                    }
+                </mat-form-field>
+                <button mat-flat-button color="primary" type="submit" [disabled]="formGroup.invalid">Login</button>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>

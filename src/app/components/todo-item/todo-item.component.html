@@ -1,0 +1,14 @@
+<mat-card class="todo-item">
+    <mat-card-header>
+        <mat-card-title [class.todo-item--completed]="todo.completed">
+            <h4>{{ todo.title }}</h4>
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="todo-item__content">
+        <mat-checkbox [checked]="todo.completed" (change)="completeTodo.emit($event)">Complete</mat-checkbox>
+        <button mat-mini-fab color="warn" (click)="deleteTodo.emit(todo.id)">
+            <mat-icon>delete</mat-icon>
+        </button>
+    </mat-card-content>
+</mat-card>
+

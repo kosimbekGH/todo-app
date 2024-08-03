@@ -1,0 +1,13 @@
+.todos {
+  width: 600px;
+
+  &__element {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  &__empty {
+    display: flex;
+    justify-content: center;
+  }
+}

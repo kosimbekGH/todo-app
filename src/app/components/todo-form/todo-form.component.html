@@ -1,0 +1,26 @@
+<mat-card class="todo-form">
+    <mat-card-header>
+        <mat-card-title>
+            <h4>Add new Todo</h4>
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <mat-form-field class="mat-mdc-outlined-button" appearance="outline">
+            <input matInput [formControl]="todoFormControl" placeholder="Ex. Buy groceries">
+            @if (todoFormControl.hasError('required') && todoFormControl.touched) {
+                <mat-error>Todo is required</mat-error>
+            }
+            @if (todoFormControl.hasError('minlength')) {
+                <mat-error>Todo must be at least 3 characters long</mat-error>
+            }
+        </mat-form-field>
+        <div class="todo-form__add-btn">
+            <button mat-mini-fab
+                    color="primary"
+                    [disabled]="!todoFormControl.valid"
+                    (click)="addNewTodo()">
+                <mat-icon>add</mat-icon>
+            </button>
+        </div>
+    </mat-card-content>
+</mat-card>
